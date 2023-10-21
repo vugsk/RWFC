@@ -1,6 +1,11 @@
 
 #include "ParserJsonFile.h"
+#include "Config.h"
 
+namespace {
+    stack<str> st_key;
+    stack<json> st_data;
+}
 
 const json ParserJsonFile::readInFile(str_c nameReadFile) {
     ifstream file(nameReadFile + FORMAT_JSON);
@@ -9,31 +14,37 @@ const json ParserJsonFile::readInFile(str_c nameReadFile) {
     return _dataRead;
 }
 
-template<typename T> T ParserJsonFile::read_T(str_c key, json data) {
-    static str num;
+template<typename T> T ParserJsonFile::read_T(str_c key, json data, bool_c test) {
+    if (!test) st_data.push(data);
 
     for (auto& [keys, values]: data.items()) {
         if (keys == key) break;
 
-        if (keys == num) {
-            _dataRead.erase(num);
+        if (keys != key && st_data.top().size() != 0 && !values.is_object()) {
+            st_data.top().erase(keys);
             continue;
         }
 
         if (values.is_object()) {
-            num = keys;
+            st_key.push(keys);
             return read_T<T>(key, values);
         }
-
         else {
             return read_T<T>(key, _dataRead);
         }
+
+    }
+
+    if (st_data.top().is_object() && st_data.top().empty()) {
+        st_data.pop();
+        st_data.top().erase(st_key.top());
+        st_key.pop();
+        
+        return read_T<T>(key, st_data.top(), true);
     }
     
     return data[key];
 }
-
-
 
 void ParserJsonFile::read(str_c nameReadFile, str_c key, int& value) {
     value = read_T<int>(key, readInFile(nameReadFile));

@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include <stack>
 
 #include <nlohmann/json.hpp>
 #include <boost/property_tree/ptree.hpp>
@@ -11,6 +12,7 @@
 
 using std::string;
 using std::vector;
+using std::stack;
 using std::pair;
 using nlohmann::json;
 using std::ifstream;

@@ -9,16 +9,21 @@ include_directories(${Boost_INCLUDE_DIRS})
 find_package(nlohmann_json 3.2.0 REQUIRED)
 
 include_directories(includes/RWFC)
+
+# file(GLOB SRC_ROOT src/*.cpp)
+
 set(SRC_ROOT 
     src/ParserFile.cpp
     src/ParserIniFile.cpp
     src/ParserJsonFile.cpp
 )
 
-## building project
+# add_executable(ReadWriteFileCpp ${SRC_ROOT})
+
+# building project
 add_library(${PROJECT_NAME} ${SRC_ROOT})
 target_include_directories(${PROJECT_NAME} PUBLIC includes)
-target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES} &{nlohmann_LIB})
+target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES} ${nlohmann_LIB})
 include(GNUInstallDirs)
 install(TARGETS ${PROJECT_NAME}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}

@@ -1,6 +1,7 @@
 
 #pragma once
 
+#include "Config.h"
 #include "ParserFile.h"
 
 class ParserJsonFile : public ParserFileRead, public ParserFileWrite {
@@ -9,7 +10,7 @@ private:
          _dataRead;
     
     const json readInFile(str_c nameReadFile);
-    template<typename T> T read_T(str_c key, json data=nullptr) ;
+    template<typename T> T read_T(str_c key, json data=nullptr, bool_c test=false) ;
     template<typename T> void write_T(T data, str_c key);
 
 public:
@@ -20,7 +21,7 @@ public:
 
     ParserJsonFile();
     ~ParserJsonFile() override;
-
+    
     void read(str_c nameReadFile, str_c key, int& value) override; //* int
     void read(str_c nameReadFile, str_c key, str& value) override; //* str
     void read(str_c nameReadFile, str_c key, float& value) override; //* float
