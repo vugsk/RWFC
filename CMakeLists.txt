@@ -8,7 +8,7 @@ include_directories(${Boost_INCLUDE_DIRS})
 ## Nlohmann json
 find_package(nlohmann_json 3.2.0 REQUIRED)
 
-include_directories(includes)
+include_directories(includes/RWFC)
 set(SRC_ROOT 
     src/ParserFile.cpp
     src/ParserIniFile.cpp
@@ -25,7 +25,7 @@ install(TARGETS ${PROJECT_NAME}
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )
-install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+install(DIRECTORY includes/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 set_property(TARGET ${PROJECT_NAME} PROPERTY POSITION_INDEPENDENT_CODE ON)
 
 ## ABI version
