@@ -1,2 +1,8 @@
 build
 .cache
+*.cmake
+CMakeFiles
+CMakeCache.txt
+install_manifest.txt
+Makefile
+*.a

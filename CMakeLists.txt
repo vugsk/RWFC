@@ -18,7 +18,7 @@ set(SRC_ROOT
 ## building project
 add_library(${PROJECT_NAME} ${SRC_ROOT})
 target_include_directories(${PROJECT_NAME} PUBLIC includes)
-target_link_libraries(${PROJECT_NAME} ${PD_OR_N_CURSES})
+target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES} &{nlohmann_LIB})
 include(GNUInstallDirs)
 install(TARGETS ${PROJECT_NAME}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
@@ -28,5 +28,5 @@ install(TARGETS ${PROJECT_NAME}
 install(DIRECTORY includes/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 set_property(TARGET ${PROJECT_NAME} PROPERTY POSITION_INDEPENDENT_CODE ON)
 
-## ABI version
+# ABI version
 set_property(TARGET ${PROJECT_NAME} PROPERTY SOVERSION 1)
