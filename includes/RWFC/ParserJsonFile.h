@@ -1,8 +1,10 @@
 
 #pragma once
 
-#include "Config.h"
 #include "ParserFile.h"
+
+#include <nlohmann/json.hpp>
+using nlohmann::json;
 
 class ParserJsonFile : public ParserFileRead, public ParserFileWrite {
 private:

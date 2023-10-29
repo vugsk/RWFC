@@ -1,9 +1,7 @@
 
 #pragma once
 
-#include "Config.h"
 #include "ParserFile.h"
-
 
 class ParserIniFile : public ParserFileRead {
 private:

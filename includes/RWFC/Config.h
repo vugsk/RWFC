@@ -4,13 +4,8 @@
 #include <string>
 #include <vector>
 
-#include <nlohmann/json.hpp>
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/ini_parser.hpp>
-
-using std::string;
-using std::vector;
-using nlohmann::json;
 
 using namespace boost::property_tree;
 
@@ -30,17 +25,17 @@ typedef const int    int_c;
 typedef const bool   bool_c;
 typedef const float  float_c;
 typedef const double double_c;
-typedef const string str_c;
-typedef       string str;
+typedef const std::string str_c;
+typedef       std::string str;
 
-typedef const vector<char*>  vec_str_c;
-typedef       vector<char_c*>vec_str;
-typedef const vector<int>    vec_int_c;
-typedef       vector<int>    vec_int;
-typedef const vector<float>  vec_float_c;
-typedef       vector<float>  vec_float;
-typedef const vector<double> vec_double_c;
-typedef       vector<double> vec_double;
-typedef const vector<bool>   vec_bool_c;
-typedef       vector<bool>   vec_bool;
+typedef const std::vector<char*>  vec_str_c;
+typedef       std::vector<char_c*>vec_str;
+typedef const std::vector<int>    vec_int_c;
+typedef       std::vector<int>    vec_int;
+typedef const std::vector<float>  vec_float_c;
+typedef       std::vector<float>  vec_float;
+typedef const std::vector<double> vec_double_c;
+typedef       std::vector<double> vec_double;
+typedef const std::vector<bool>   vec_bool_c;
+typedef       std::vector<bool>   vec_bool;
 

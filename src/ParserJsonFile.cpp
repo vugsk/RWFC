@@ -1,11 +1,10 @@
 
 #include "ParserJsonFile.h"
-#include "Config.h"
 
 #include <stack>
 
 namespace {
-    std::stack<string> st_key;
+    std::stack<str> st_key;
     std::stack<json> st_data;
 }
 
@@ -64,7 +63,7 @@ void ParserJsonFile::read(str_c nameReadFile, str_c key, int& value)
 
 void ParserJsonFile::read(str_c nameReadFile, str_c key, char_c* &value)
 {
-    value = read_T<string>(key, readInFile(nameReadFile)).c_str();
+    value = read_T<str>(key, readInFile(nameReadFile)).c_str();
     _dataRead = nullptr;
 }
 
@@ -86,16 +85,16 @@ void ParserJsonFile::read(str_c nameReadFile, str_c key, bool& value)
     _dataRead = nullptr;
 }
 
-void ParserJsonFile::read(str_c nameReadFile, str_c key, vector<int>& value)
+void ParserJsonFile::read(str_c nameReadFile, str_c key, vec_int& value)
 {    
-    value = read_T<vector<int>>(key, readInFile(nameReadFile));
+    value = read_T<vec_int>(key, readInFile(nameReadFile));
     _dataRead = nullptr;
 }
 
-void ParserJsonFile::read(str_c nameReadFile, str_c key, vector<char_c*>& value)
+void ParserJsonFile::read(str_c nameReadFile, str_c key, vec_str& value)
 {
 
-    vector<str> op = read_T<vector<str>>(key, readInFile(nameReadFile));
+    std::vector<str> op = read_T<std::vector<str>>(key, readInFile(nameReadFile));
 
     for (int i = 0; i < op.size(); i++) {
         value.push_back(op[i].c_str());
@@ -104,21 +103,21 @@ void ParserJsonFile::read(str_c nameReadFile, str_c key, vector<char_c*>& value)
     _dataRead = nullptr;
 }
 
-void ParserJsonFile::read(str_c nameReadFile, str_c key, vector<float>& value)
+void ParserJsonFile::read(str_c nameReadFile, str_c key, vec_float& value)
 {
-    value = read_T<vector<float>>(key, readInFile(nameReadFile));
+    value = read_T<vec_float>(key, readInFile(nameReadFile));
     _dataRead = nullptr;
 }
 
-void ParserJsonFile::read(str_c nameReadFile, str_c key, vector<double>& value)
+void ParserJsonFile::read(str_c nameReadFile, str_c key, vec_double& value)
 {
-    value = read_T<vector<double>>(key, readInFile(nameReadFile));
+    value = read_T<vec_double>(key, readInFile(nameReadFile));
     _dataRead = nullptr;
 }
 
-void ParserJsonFile::read(str_c nameReadFile, str_c key, vector<bool>& value)
+void ParserJsonFile::read(str_c nameReadFile, str_c key, vec_bool& value)
 {
-    value = read_T<vector<bool>>(key, readInFile(nameReadFile));
+    value = read_T<vec_bool>(key, readInFile(nameReadFile));
     _dataRead = nullptr;
 }
 
