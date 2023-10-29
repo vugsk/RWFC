@@ -19,6 +19,7 @@ set(SRC_ROOT
 )
 
 # add_executable(ReadWriteFileCpp ${SRC_ROOT})
+# target_link_libraries(ReadWriteFileCpp ${Boost_LIBRARIES} ${nlohmann_LIB})
 
 # building project
 add_library(${PROJECT_NAME} ${SRC_ROOT})

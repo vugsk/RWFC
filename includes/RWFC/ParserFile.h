@@ -8,7 +8,7 @@ public:
     virtual ~ParserFileRead() = 0;
 
     virtual void read(str_c nameReadFile, str_c key, int& value) = 0; //* int
-    virtual void read(str_c nameReadFile, str_c key, str& value) = 0; //* str
+    virtual void read(str_c nameReadFile, str_c key, char_c* &value) = 0; //* str
     virtual void read(str_c nameReadFile, str_c key, float& value) = 0; //* float
     virtual void read(str_c nameReadFile, str_c key, double& value) = 0; //* double
     virtual void read(str_c nameReadFile, str_c key, bool& value) = 0; //* bool
