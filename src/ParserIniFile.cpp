@@ -16,7 +16,7 @@ T ParserIniFile::read_vec_T(str_c key)
     for (int i = 0; i < dataVector.size(); i++)
     {
         dataVector[i] = read_T<T2>(
-                key + ".key" + std::to_string(i));
+            key + ".key" + std::to_string(i));
     }
 
     return dataVector;
@@ -24,53 +24,56 @@ T ParserIniFile::read_vec_T(str_c key)
 
 void ParserIniFile::read(str_c nameReadFile, str_c key, int& value)
 {
-    ini_parser::read_ini(nameReadFile+FORMAT_INI, pt);
+    ini_parser::read_ini(nameReadFile, pt);
     value = read_T<int>(key);
 } //* int
 void ParserIniFile::read(str_c nameReadFile, str_c key, char_c* &value)
 {
-    ini_parser::read_ini(nameReadFile+FORMAT_INI, pt);
-    value = read_T<char_c*>(key);
+    ini_parser::read_ini(nameReadFile, pt);
+    value = read_T<str>(key).c_str();
 }
 void ParserIniFile::read(str_c nameReadFile, str_c key, float& value)
 {
-    ini_parser::read_ini(nameReadFile+FORMAT_INI, pt);
+    ini_parser::read_ini(nameReadFile, pt);
     value = read_T<float>(key);
 } //* float
 void ParserIniFile::read(str_c nameReadFile, str_c key, double& value)
 {
-    ini_parser::read_ini(nameReadFile+FORMAT_INI, pt);
+    ini_parser::read_ini(nameReadFile, pt);
     value = read_T<double>(key);
 } //* double
 void ParserIniFile::read(str_c nameReadFile, str_c key, bool& value)
 {
-    ini_parser::read_ini(nameReadFile+FORMAT_INI, pt);
+    ini_parser::read_ini(nameReadFile, pt);
     value = read_T<bool>(key);
 } //* bool
 
 void ParserIniFile::read(str_c nameReadFile, str_c key, vec_int& value)
 {
-    ini_parser::read_ini(nameReadFile+FORMAT_INI, pt);
+    ini_parser::read_ini(nameReadFile, pt);
     value = read_vec_T<vec_int, int>(key);
 } //* vector_int
 void ParserIniFile::read(str_c nameReadFile, str_c key, vec_str& value)
 {
-    ini_parser::read_ini(nameReadFile+FORMAT_INI, pt);
-    value = read_vec_T<vec_str, char*>(key);
+    ini_parser::read_ini(nameReadFile, pt);
+    std::vector<str> arr = read_vec_T<std::vector<str>, str>(key);
+    for (size_t i = 0; i < arr.size(); i++)
+        value[i] = arr[i].c_str();
+        
 } //* vector_str
 void ParserIniFile::read(str_c nameReadFile, str_c key, vec_float& value)
 {
-    ini_parser::read_ini(nameReadFile+FORMAT_INI, pt);
+    ini_parser::read_ini(nameReadFile, pt);
     value = read_vec_T<vec_float, float>(key);
 } //* vector_float
 void ParserIniFile::read(str_c nameReadFile, str_c key, vec_double& value)
 {
-    ini_parser::read_ini(nameReadFile+FORMAT_INI, pt);
+    ini_parser::read_ini(nameReadFile, pt);
     value = read_vec_T<vec_double, double>(key);
 } //* vector_double
 void ParserIniFile::read(str_c nameReadFile, str_c key, vec_bool& value)
 {
-    ini_parser::read_ini(nameReadFile+FORMAT_INI, pt);
+    ini_parser::read_ini(nameReadFile, pt);
     value = read_vec_T<vec_bool, bool>(key);
 } //* vector_bool
 
